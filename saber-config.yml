@@ -1,0 +1,25 @@
+theme: minima
+
+siteConfig:
+  title: Shaun Warman
+  url: https://shaunwarman.com
+  author: Shaun Warman
+  email: shaunwarman1@gmail.com
+  description: "Heads down"
+
+themeConfig:
+  nav:
+    - text: Home
+      link: /
+    - text: About
+      link: /about.html
+  social:
+    github: shaunwarman
+    linkedin: shaunwarman
+    rss: false
+
+plugins:
+  - resolve: saber-plugin-query-posts
+  - resolve: saber-plugin-feed
+    options:
+      atomFeed: false

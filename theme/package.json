@@ -1,0 +1,74 @@
+{
+  "_from": "saber-theme-minima@latest",
+  "_id": "saber-theme-minima@3.2.2",
+  "_inBundle": false,
+  "_integrity": "sha512-pjUVSfEqJZh2y8l0F5ixBZIjTt+3W0DTgY0eJvxJDLgVuSuNHyG01RDkZGnue5JL+vIiagei6JctQcsxzQSSHg==",
+  "_location": "/saber-theme-minima",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "saber-theme-minima@latest",
+    "name": "saber-theme-minima",
+    "escapedName": "saber-theme-minima",
+    "rawSpec": "latest",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/saber-theme-minima/-/saber-theme-minima-3.2.2.tgz",
+  "_shasum": "4ed0ffc6530c28a8b95d58a64a85854aaa2f630f",
+  "_spec": "saber-theme-minima@latest",
+  "_where": "/Users/swarman/Development/Source/side/shaunwarman.com/shaunwarman.com",
+  "bugs": {
+    "url": "https://github.com/saberland/saber-theme-minima/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "tinydate": "^1.2.0"
+  },
+  "deprecated": false,
+  "description": "[![npm](https://badgen.net/npm/v/saber-theme-minima)](https://npm.im/saber-theme-minima) [![circleci](https://badgen.net/circleci/github/saberland/saber-theme-minima/master)](https://circleci.com/gh/saberland/saber-theme-minima)",
+  "devDependencies": {
+    "saber": "^0.10.3",
+    "saber-plugin-feed": "^0.4.2",
+    "saber-plugin-query-posts": "^0.4.4",
+    "sass": "^1.22.12",
+    "sass-loader": "^8.0.0",
+    "vue-compile": "^0.6.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/saberland/saber-theme-minima#readme",
+  "keywords": [
+    "saber",
+    "saber-theme",
+    "minima",
+    "theme",
+    "egoist",
+    "clean",
+    "simple",
+    "jekyll"
+  ],
+  "license": "MIT",
+  "name": "saber-theme-minima",
+  "peerDependencies": {
+    "saber": "^0.10.3",
+    "saber-plugin-feed": "^0.4.2",
+    "saber-plugin-query-posts": "^0.4.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saberland/saber-theme-minima.git"
+  },
+  "scripts": {
+    "build": "vue-compile src -o dist",
+    "build:example": "saber build example",
+    "dev:example": "saber example",
+    "prepublishOnly": "yarn build"
+  },
+  "version": "3.2.2"
+}
