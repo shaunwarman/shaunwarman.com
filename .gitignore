@@ -2,3 +2,4 @@ node_modules
 public
 theme/dist
 .saber
+.DS_Store
