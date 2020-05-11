@@ -4,6 +4,15 @@
     "dev": "saber",
     "build": "saber build"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shaunwarman/shaunwarman.com"
+  },
+  "license": "MIT",
+  "author": "Shaun Warman <shaunwarman1@gmail.com> (https://shaunwarman.com)",
+  "contributors": [
+    "Shaun Warman <shaunwarman1@gmail.com> (https://shaunwarman.com)"
+  ],
   "devDependencies": {
     "saber-plugin-feed": "latest",
     "saber-plugin-query-posts": "latest",
@@ -11,5 +20,14 @@
   },
   "dependencies": {
     "saber": "^0.11.5"
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-github",
+      [
+        "lint-first-heading-level",
+        false
+      ]
+    ]
   }
 }

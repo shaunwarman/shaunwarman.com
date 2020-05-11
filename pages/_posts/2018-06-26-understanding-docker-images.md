@@ -7,10 +7,12 @@ layout: post
 ![](https://miro.medium.com/max/1400/0*Ld_q9vnfpV5ZVRFe)
 
 TLDR;
-- Minimize the amount of image layers
-- Use image layer cache correctly
-- Take advantage of image layers at deploy time
-- Keep images as light as possible
+
+* Minimize the amount of image layers
+* Use image layer cache correctly
+* Take advantage of image layers at deploy time
+* Keep images as light as possible
+
 
 ## Image layers
 
@@ -90,7 +92,7 @@ COPY . .
 CMD ["/bin/bash", "/usr/src/app/init"]
 ```
 
-For nodejs, package.json references the dependencies you want to install, and similarly, package-lock.json is metadata referring to the locked down dependency tree of what was previously installed. So above, package-lock.json would get a hash, if it changes we would run npm install from scratch and any instructions after that. If package-lock.json is the same as before, matching the cache, then we would use the cache and be eligible to use the cache for any instruction after that. *This means we can avoid a fresh npm install for every build by using the cache and saving on build time.*
+For nodejs, package.json references the dependencies you want to install, and similarly, package-lock.json is metadata referring to the locked down dependency tree of what was previously installed. So above, package-lock.json would get a hash, if it changes we would run npm install from scratch and any instructions after that. If package-lock.json is the same as before, matching the cache, then we would use the cache and be eligible to use the cache for any instruction after that. _This means we can avoid a fresh npm install for every build by using the cache and saving on build time._
 
 ### Deploy time
 
@@ -113,20 +115,23 @@ Once we’ve built an image, we can push it to some central store like dockerhub
 }
 ```
 
+
 ## Keep it light
 
 As you can see, Docker images are the files, aka the blueprint, that your containers start from. It is often easy to add an OS flavor of your liking and use the built-in package manager to add whatever you need. But, be careful, as building and deploying these images can grow over time. And, if you start out with a large image, you’ll only continue to pay down the road as build and deploy times start to grow. Let’s take a quick look at a couple popular base image choices:
 
-- *CentOS* — 200 mb
-- *Ubuntu* — 115 mb
-- *Alpine* — 5 mb
+* _CentOS_ — 200 mb
+* _Ubuntu_ — 115 mb
+* _Alpine_ — 5 mb
 
 Alpine is based off of musl libc with a trimmed down set of binaries out of the box to keep it small. It also comes with it’s own apk package manager. This is a great choice for a base image.
+
 
 ## Conclusion
 
 Understanding docker images and it’s corresponding layers is important. Optimize how you construct each layer to save you time during builds as well as deploys. Be sure to look at the output of your images history and see if there are any heavy layers that need updates.
 
 For further reading, checkout:
-- https://docs.docker.com/v17.09/engine/userguide/storagedriver/imagesandcontainers/
-- https://docs.docker.com/v17.09/engine/userguide/eng-image/dockerfile_best-practices
+
+* <https://docs.docker.com/v17.09/engine/userguide/storagedriver/imagesandcontainers/>
+* <https://docs.docker.com/v17.09/engine/userguide/eng-image/dockerfile_best-practices>
