@@ -7,7 +7,7 @@ layout: post
 
 ## Overview
 
-This guide runs through amazon s3 and cloudfront setup and configuration to utilize for application asset upload (to s3) and CDN delivery (from cloudfront).
+This guide runs through amazon [S3][] and [Cloudfront][] setup and configuration to utilize for application asset upload (to s3) and CDN delivery (from cloudfront).
 
 _NOTE: This guide does not contain any application integration._
 
@@ -40,7 +40,7 @@ If you are new to AWS S3, checkout the [S3 Getting Started](https://docs.aws.ama
 
 #### Bucket policy
 
-S3 bucket policy enables authentication and authorization using amazons IAM (Identity and Access Management) policies. This allows you, at a granular level, to enforce what accounts can do what actions on what S3 buckets.
+[S3][] bucket policy enables authentication and authorization using amazons [IAM][] (Identity and Access Management) policies. This allows you, at a granular level, to enforce what accounts can do what actions on what S3 buckets.
 
 <br />
 
@@ -89,6 +89,7 @@ S3 bucket policy enables authentication and authorization using amazons IAM (Ide
 <br />
 
 #### CORS configuration
+[S3][] CORS (cross-origin resource sharing) configuration enables rules for S3 to enforce the allowed origin (based on `Origin` header), methods, headers, etc. This allowed response information is important and must be forwarded by your CDN provider (shown in cloudfront sections below).
 
 **Example configuration**
 
@@ -113,21 +114,25 @@ S3 bucket policy enables authentication and authorization using amazons IAM (Ide
 
 ## Setup Cloudfront
 
-Cloudfront is amazon's CDN (content delivery network) offering. Cloudfront hosts servers all around the world distribute and cache your assets so that you are as close to your users as possible.
+[Cloudfront][] is Amazon's CDN (content delivery network) offering. Cloudfront hosts servers all around the world to distribute and cache your assets so that you are as close to your users as possible.
 
 ### Cloudfront Getting Started
 
-If you are new to AWS Cloudfront, checkout the [Setting up](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/setting-up-cloudfront.html) and [Getting Started](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/GettingStarted.html) guides.
+If you are new to AWS Cloudfront, checkout the [Setting Up](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/setting-up-cloudfront.html) and [Getting Started](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/GettingStarted.html) guides.
+
+<br />
 
 ### Cloudfront configuration
 
-### Origin settings
+#### Origin settings
 
-Cloudfront origin settings point cloudfront to your S3 origin where content is served from and then distributed and cached
+[Cloudfront][] origin settings point cloudfront to your S3 origin where content is served from and then distributed and cached
+
+<br />
 
 ![](../../static/cloudfront-origin-settings.png)
 
-### Cache behavior settings
+#### Cache behavior settings
 
 Cloudfront cache behavior settings tell cloudfront what and how to cache. Including the origin where assets live and what headers to honor and forward to your users. This is very important to get CORS to work.
 
@@ -140,9 +145,15 @@ Cloudfront cache behavior settings tell cloudfront what and how to cache. Includ
   * Access-Control-Requests-Headers
   * Access-Control-Requests-Method
 
+<br />
+
 ![](../../static/cloudfront-cache-behavior-settings.png)
 
 
 ## Conclusion
 
-This concludes a simple guide to setup amazon s3 for asset storage and amazon cloudfront for CDN delivery of those assets. I hope you found this useful!
+This concludes our simple guide to setup Amazon [S3][] for asset storage and Amazon [Cloudfront][] for CDN delivery of those assets. I hope you found this useful!
+
+[Cloudfront]: https://aws.amazon.com/cloudfront
+[IAM]: https://aws.amazon.com/iam/
+[S3]: https://aws.amazon.com/s3/

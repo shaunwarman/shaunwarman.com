@@ -1,12 +1,12 @@
 ---
-title: "Enable 2FA in LAD"
+title: "Enable 2FA in Lad"
 date: 2020-04-06
 layout: post
 ---
 
 > ##### **TLDR; `AUTH_OTP_ENABLED = true` in `.env`. Done.**
 
-If you're reading this and are unfamiliar with [lad.js](https://github.com/ladjs/lad) be sure to take a moment to check out the [Getting Started](https://github.com/ladjs/lad#get-started) pages as well as the [feature list](https://github.com/ladjs/lad#features). It's an amazing, full featured node.js framework that allows you to turn on features via configuration.
+If you're reading this and are unfamiliar with [Lad](https://github.com/ladjs/lad) be sure to take a moment to check out the [Getting Started](https://github.com/ladjs/lad#get-started) pages as well as the [feature list](https://github.com/ladjs/lad#features). It's an amazing, full featured node.js framework that allows you to turn on features via configuration.
 
 In this article (more so recipe), we'll look at turning on 2FA using OTP with a single line of code. We'll also take a look at what this gives us and how this works.
 
@@ -15,7 +15,7 @@ _Note: From here on out, it is expected that you have scaffolded a lad.js app us
 
 ## Enable OTP in lad.js
 
-Lad.js configuration (`.env`) allows us to turn on and off features. You can see the defaults in [`.env.defaults`](https://github.com/ladjs/lad/blob/master/template/.env.defaults) for reference. One of these features is OTP that we can simply turn on by adding `AUTH_OTP_ENABLED=true`. That's it. 2FA is enabled. Let's take a deeper look at what we get and how this works.
+Lad.js environment configuration (`.env`) allows us to turn on and off features. You can see the defaults in [`.env.defaults`](https://github.com/ladjs/lad/blob/master/template/.env.defaults) for reference. One of these features is OTP (one-time passcode) that we can simply turn on by adding `AUTH_OTP_ENABLED=true`. That's it. 2FA is enabled and we get a full stack enhancement to our application. Let's take a deeper look at what we get and how this works.
 
 
 ## User point-of-view

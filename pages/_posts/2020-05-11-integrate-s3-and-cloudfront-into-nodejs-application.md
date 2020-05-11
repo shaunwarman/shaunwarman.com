@@ -7,7 +7,7 @@ layout: post
 
 ## Overview
 
-This guide helps integrate an Amazon S3 and Cloudfront CDN workflow into your nodejs application. If you need to setup s3 and cloudfront, see: [Setup AWS S3 and Cloudfront CDN](./setup-s3-and-cloudfront).
+This guide helps integrate an Amazon [S3][] and [Cloudfront][] CDN workflow into your nodejs application. If you need to setup s3 and cloudfront, please read: [Setup AWS S3 and Cloudfront CDN](./setup-s3-and-cloudfront).
 
 
 ## Table of Contents
@@ -16,23 +16,29 @@ This guide helps integrate an Amazon S3 and Cloudfront CDN workflow into your no
 * [Environment variables](#environment-variables)
 * [Tooling](#tooling)
   * [Publish to S3](#publish-to-s3)
-  * [Invalidate cloudfront cache](#invalidate-cloudfront-cache)
-* [LAD Framework](#lad-framework)
+  * [Invalidate Cloudfront cache](#invalidate-cloudfront-cache)
+* [Lad Framework](#lad-framework)
 
+<br />
 
 ## Workflow
 
-* Develop locally
-* Build static assets
-* Upload assets to S3
-* Invalidate Cloudfront CDN cache
+* Develop your application
+* Build your static assets
+* Upload assets to [S3][]
+* Invalidate [Cloudfront][] CDN cache
 
+<br />
 
 ## Environment variables
+These AWS environment variables are specific to local S3 and Cloudfront integration. This allows us to specify which S3 and Cloudfront setup as well as authorization information so that we can make changes.
+
 - [`AWS_PROFILE`](#aws-profile)
 - [`AWS_S3_BUCKET`](#aws-s3-bucket)
 - [`AWS_CLOUDFRONT_DOMAIN`](#aws-cloudfront-domain)
 - [`AWS_CLOUDFRONT_DISTRIBUTION_ID`](#aws-cloudfront-distribution-id)
+
+<br />
 
 #### AWS_PROFILE
 `AWS_PROFILE` is the name of the credentials profile (`default` shown below) that references your AWS access key and secret. The file should look like:
@@ -43,14 +49,22 @@ aws_access_key_id = <aws_access_key>
 aws_secret_access_key = <aws_secret>
 ```
 
+<br />
+
 #### AWS_S3_BUCKET
 `AWS_S3_BUCKET` is the amazon S3 bucket name that you have setup as your origin.
+
+<br />
 
 #### AWS_CLOUDFRONT_DOMAIN
 `AWS_CLOUDFRONT_DOMAIN` is the cloudfront domain referenced in the [cloudfront distributions home page][]. This will be the CDN domain that your assets will be accessible from.
 
+<br />
+
 #### AWS_CLOUDFRONT_DISTRIBUTION_ID
 `AWS_CLOUDFRONT_DISTRIBUTION_ID` is the particular Cloudfront ID referenced in the [cloudfront distributions home page][].
+
+<br />
 
 ## Tooling
 
@@ -90,14 +104,16 @@ function publish() {
 }
 ```
 
+<br />
+
 ### Invalidate cloudfront cache
-Once we've pushed our assets to Amazon S3 successfully using similar steps to above, we now want to tell our CDN (cloudfront) to invalidate it's current cache for files that have been updated. This will ensure that the CDN properly retreives the latest files from S3, distributes those files globally and caching them for performance.
+Once we've pushed our assets to Amazon S3 successfully using similar steps to above, we now want to tell our CDN (cloudfront) to invalidate it's current cache for files that have been updated. This will ensure that the CDN properly retreives the latest files from S3, distributes those files globally and caches them for performance.
 
 #### Steps
 1. Assets are available in Amazon S3 using the above steps
 1. Invalidate the Cloudfront cache for updated files
 
-We want to add an extra line ot our above reference. For simplicity, we'll shorten the above code reference to focus on the added line of code that takes care of the cloudfront cache invalidation using [`gulp-awspublish-cloudfront`](https://github.com/tmthrgd/gulp-awspublish-cloudfront).
+We want to add an extra line to our above code reference. For simplicity, we'll shorten the above code reference to focus on the added line of code that takes care of the cloudfront cache invalidation using [`gulp-awspublish-cloudfront`](https://github.com/tmthrgd/gulp-awspublish-cloudfront).
 
 **Example reference**
 
@@ -111,10 +127,12 @@ return gulp.src(BUILD_DIRECTORY)
     .pipe(awscloudfront(AWS_CLOUDFRONT_DISTRIBUTION_ID));
 ```
 
-## LAD Framework
-We can tie all the above workflow together in the LAD framework by specifying the [environment variables](#environment-variables) listed above in a `.env` file. LAD has built-in support for:
-- live reload for local development
-- optimized build pipeline to bundle views, javascript, images, css and more
+<br />
+
+## Lad Framework
+We can tie all the above workflow together in the [Lad][] framework by specifying the [environment variables](#environment-variables) listed above in a `.env` file. Lad has built-in support for:
+- Live reload for local development
+- Optimized build pipeline to bundle views, javascript, images, css and more
 - S3 integration to upload bundled files
 - Cloudfront integration to manage CDN cache
 
@@ -128,5 +146,13 @@ $ NODE_ENV=production npm run build
 $ gulp publish
 ```
 
+<br />
+
+## Conclusion
+We've run through a simple S3 and Cloudfront workflow useful for any node.js application. Additionally, we've highlighted the [Lad][] framework feature set that handles this CDN workflow out of the box. If this peeks your interest, navigate to [Lad][] repo and feel free to come join our community!
+
 
 [cloudfront distributions home page]: https://console.aws.amazon.com/cloudfront/home
+[Lad]: https://github.com/ladjs/lad
+[Cloudfront]: https://aws.amazon.com/cloudfront
+[S3]: https://aws.amazon.com/s3/
