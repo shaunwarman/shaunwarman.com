@@ -109,7 +109,7 @@ If you are new to AWS S3, checkout the [S3 Getting Started](https://docs.aws.ama
 
 **Example visual**
 
-![](../../static/s3-settings-bucket-policy.png)
+![](../../static/s3-settings-cors-configuration.png)
 
 
 ## Setup Cloudfront
